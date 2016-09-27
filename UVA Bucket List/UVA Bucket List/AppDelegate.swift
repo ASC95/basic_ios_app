@@ -6,13 +6,15 @@
 //  Copyright © 2016 Nader Maharmeh. All rights reserved.
 //
 
+//This is the entry point into the app.
+
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+@UIApplicationMain //Creates an application object that manages the app's lifecycle
+class AppDelegate: UIResponder, UIApplicationDelegate { //this class is where we write custom code for the app. Provides windows where content is drawn.
 
-    var window: UIWindow?
-
+    var window: UIWindow? //there is only one field: the window. It is an optional.
+    //These methods allow the application object to talk to the app delegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

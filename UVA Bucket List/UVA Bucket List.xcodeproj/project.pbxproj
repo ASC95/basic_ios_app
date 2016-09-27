@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					123C13DF1D96E541006910C6 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 53Q758BJQ4;
 						ProvisioningStyle = Automatic;
 					};
 					123C13F31D96E542006910C6 = {
@@ -414,11 +415,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 53Q758BJQ4;
 				INFOPLIST_FILE = "UVA Bucket List/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uvagroup.UVA-Bucket-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -426,11 +430,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 53Q758BJQ4;
 				INFOPLIST_FILE = "UVA Bucket List/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uvagroup.UVA-Bucket-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -507,6 +514,7 @@
 				123C140A1D96E542006910C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		123C140B1D96E542006910C6 /* Build configuration list for PBXNativeTarget "UVA Bucket ListTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +523,7 @@
 				123C140D1D96E542006910C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		123C140E1D96E542006910C6 /* Build configuration list for PBXNativeTarget "UVA Bucket ListUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +532,7 @@
 				123C14101D96E542006910C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
