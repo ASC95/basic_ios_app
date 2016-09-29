@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         listTableView.dataSource = self
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.cellSwiped))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.cellSwiped))
