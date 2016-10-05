@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  UVA Bucket List
 //
-//  Created by Nader Maharmeh on 9/24/16.
+//  Created by Nader Maharmeh and Austin Chang on 9/24/16.
 //  Copyright © 2016 Nader Maharmeh. All rights reserved.
 //
 
