@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cZz-nW-Jkk" id="l4Y-Db-5qb">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -54,6 +54,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="537.5" y="152.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7LP-fh-51L">
+            <objects>
+                <viewController id="Efv-C7-iYN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lzS-KF-5Tn"/>
+                        <viewControllerLayoutGuide type="bottom" id="M2t-t9-D5K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KRh-LY-KRi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4zr-Xt-tUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="170"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rgk-9d-eC9">

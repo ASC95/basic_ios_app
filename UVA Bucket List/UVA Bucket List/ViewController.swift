@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-
+    
     var items: [String] = ["Streak the Lawn", "Go to Carter's Mountain", "Party with T-Sully", "Frat Every Day"]
     @IBOutlet weak var listTableView: UITableView!
     //@IBOutlet weak var itemTableViewCell: UITableViewCell!
@@ -17,12 +17,11 @@ class ViewController: UIViewController, UITableViewDataSource {
         alert()
     }
     
-    /* Called exactly once when the view controller is loaded into memory. Establishes things that will last the entire lifecycle. In this case, it sets the TableView data source and swipe recognition constants */
+    /* Usually called once when the view controller is loaded into memory. Establishes things that will last the entire lifecycle. In this case, it sets the TableView data source and swipe recognition constants */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         listTableView.dataSource = self
-        
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.cellSwiped))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.cellSwiped))
         leftSwipe.direction = .left
@@ -32,20 +31,27 @@ class ViewController: UIViewController, UITableViewDataSource {
         //let infoPage = UITapGestureRecognizer(target: self, action: #selector(ViewController.cellTapped))
     }
     
-    /* Takes a UISwipeGestureRecognizer from viewDidLoad. Allows the table cell to change color depending on which way it was swiped */
+    /* Make sure that the selected indexPath is pointing to a valid cell */
+    /*
+     func indexPathIsValid(indexPath:IndexPath) -> Bool {
+     let section = indexPath.section
+     let row = indexPath.row
+     let lastSectionIndex = listTableView.numberOfSections - 1
+     if section > lastSectionIndex
+     {
+     return false
+     }
+     let rowCount = listTableView.numberOfRows(inSection: indexPath.section)
+     return row <= rowCount
+     }
+     */
+    
+    /* Takes a UISwipeGestureRecognizer from viewDidLoad. Allows a table cell to change color depending on which way it was swiped */
     func cellSwiped(mySender:UISwipeGestureRecognizer) {
         let point = mySender.location(in: self.listTableView) //this is a CGPoint
-        let path = self.listTableView.indexPathForRow(at: point) //this is an IndexPath
-        
-        //bad things happening here
-        
-        //self.listTableView.indexPathForSelectedRow?.isEmpty
-        //let valid = 1 < items.count
-        //(path?.count)!
-        //let valid = (path?.section)! < self.listTableView.numberOfRows(inSection: (path?.section)!)
-        //let valid = (path?.section)! < self.listTableView.numberOfSections && (path?.row)! < self.listTableView.numberOfRows(inSection:path.section)
-        
-        if ()! {
+        let path = self.listTableView.indexPathForRow(at: point) //this is an IndexPath. It will be "nil" if the cell selected isn't valid.
+        if (path != nil) {
+            //if (indexPathIsValid(indexPath: path?)) {
             let cell = self.listTableView.cellForRow(at: path!) //this is a UITableViewCell
             if (mySender.direction == .left) {
                 cell?.backgroundColor = UIColor.white
@@ -53,18 +59,17 @@ class ViewController: UIViewController, UITableViewDataSource {
             if (mySender.direction == .right) {
                 cell?.backgroundColor = UIColor.green
             }
-        }//
+        }
     }
     
     /* Required. Asks the data source for a cell to insert in a particular location of the table view. */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "listItem") //as! itemTableViewCell
         cell?.textLabel?.text = items[indexPath.row]
         //cell.itemLabel.text = items[indexPath.row]
         return cell!
     }
- 
+    
     /* Required. Tells the data source to return the number of rows in a given section of a table view. */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count //should return "4" at the start
@@ -90,12 +95,12 @@ class ViewController: UIViewController, UITableViewDataSource {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
