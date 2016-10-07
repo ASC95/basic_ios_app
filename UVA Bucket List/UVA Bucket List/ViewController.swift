@@ -11,10 +11,18 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     var items: [String] = ["Streak the Lawn", "Go to Carter's Mountain", "Party with T-Sully", "Frat Every Day"]
     @IBOutlet weak var listTableView: UITableView!
-    //@IBOutlet weak var itemTableViewCell: UITableViewCell!
-    
     @IBAction func addItem(_ sender: AnyObject) {
         alert()
+    }
+    
+    func prepare(for mySegue: UIStoryboardSegue, mySender:UITapGestureRecognizer?) {
+        if (mySegue.identifier == "segueToInfoPage") {
+            let newVC:InfoPage = mySegue.destination as! InfoPage
+            /*
+            let path:IndexPath = self.listTableView.indexPathForSelectedRow!
+            let passedObject = self.listTableView.cellForRow(at: path)
+            */
+        }
     }
     
     /* Usually called once when the view controller is loaded into memory. Establishes things that will last the entire lifecycle. In this case, it sets the TableView data source and swipe recognition constants */
@@ -28,30 +36,16 @@ class ViewController: UIViewController, UITableViewDataSource {
         rightSwipe.direction = .right
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
+        
+        
         //let infoPage = UITapGestureRecognizer(target: self, action: #selector(ViewController.cellTapped))
     }
-    
-    /* Make sure that the selected indexPath is pointing to a valid cell */
-    /*
-     func indexPathIsValid(indexPath:IndexPath) -> Bool {
-     let section = indexPath.section
-     let row = indexPath.row
-     let lastSectionIndex = listTableView.numberOfSections - 1
-     if section > lastSectionIndex
-     {
-     return false
-     }
-     let rowCount = listTableView.numberOfRows(inSection: indexPath.section)
-     return row <= rowCount
-     }
-     */
     
     /* Takes a UISwipeGestureRecognizer from viewDidLoad. Allows a table cell to change color depending on which way it was swiped */
     func cellSwiped(mySender:UISwipeGestureRecognizer) {
         let point = mySender.location(in: self.listTableView) //this is a CGPoint
         let path = self.listTableView.indexPathForRow(at: point) //this is an IndexPath. It will be "nil" if the cell selected isn't valid.
         if (path != nil) {
-            //if (indexPathIsValid(indexPath: path?)) {
             let cell = self.listTableView.cellForRow(at: path!) //this is a UITableViewCell
             if (mySender.direction == .left) {
                 cell?.backgroundColor = UIColor.white
@@ -66,7 +60,6 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listItem") //as! itemTableViewCell
         cell?.textLabel?.text = items[indexPath.row]
-        //cell.itemLabel.text = items[indexPath.row]
         return cell!
     }
     
@@ -100,7 +93,5 @@ class ViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 
