@@ -12,9 +12,15 @@ class InfoPage: UIViewController {
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemText: UITextView!
     @IBOutlet weak var itemStatus: UISwitch!
-    
+    var passedTitle:String = ""
+    //var passedText:String = "" //won't this destory the text each time?
+    var passedStatus:Bool = false
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
+        itemTitle.text = passedTitle
+        //itemText.text = passedText
+        itemStatus.isOn = passedStatus
         let dismissKeyboard = UITapGestureRecognizer.init(target: self, action: #selector(InfoPage.userTappedBackground))
         view.addGestureRecognizer(dismissKeyboard)
     }
@@ -26,6 +32,11 @@ class InfoPage: UIViewController {
     
     @IBAction func userTappedBackground() {
         view.endEditing(true)
+    }
+    
+    /* Goes back to the List View Controller */
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        
     }
     
     /*

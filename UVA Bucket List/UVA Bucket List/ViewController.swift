@@ -18,7 +18,6 @@ class ViewController: UIViewController, UITableViewDataSource {
     /* Usually called once when the view controller is loaded into memory. Establishes things that will last the entire lifecycle. In this case, it sets the TableView data source and swipe recognition constants */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.automaticallyAdjustsScrollViewInsets = false
         listTableView.dataSource = self
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.cellSwiped))
@@ -27,48 +26,30 @@ class ViewController: UIViewController, UITableViewDataSource {
         rightSwipe.direction = .right
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
-        
-        /*
-        let tapper = UITapGestureRecognizer(target: self, action: #selector(ViewController.activateSegue))
-        view.addGestureRecognizer(tapper)
-         */
     }
+
+    /* Automatically called because I created the segue in the storyboard */
     
-    /*
-    func activateSegue() {
-        self.performSegue(withIdentifier: "segueToInfoPage", sender: self)
-    }
-    */
- 
-    //IS THIS FUNCTION BEING CALLED?! I DON'T KNOW AND I CAN'T TELL 
-    func prepare(for mySegue: UIStoryboardSegue, mySender:UITapGestureRecognizer?) {
-        if (mySegue.identifier == "specialSeg") {
-            let destination = mySegue.destination as! InfoPage
-            
-            //destination.itemTitle.text = "Please woasdlfkajsdf"
-            //destination.itemText.text = "asdlfajsdfladf"
-            destination.itemStatus.isOn = false
-            
-            /*
-            let point = mySender?.location(in: self.listTableView)
-            let path = self.listTableView.indexPathForRow(at: point!)
-            if (path != nil) {
-                let cell = self.listTableView.cellForRow(at: path!)
-                if (cell?.backgroundColor == UIColor.green) {
-                    destination.itemStatus.isOn = true
-                }
-                if (cell?.backgroundColor == UIColor.white) {
-                    destination.itemStatus.isOn = false
-                }
+    //Keep text in info page after edited
+    //pass back changes to the cells
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = listTableView.cellForRow(at: listTableView.indexPathForSelectedRow!)
+        if (segue.identifier == "specialSeg") {
+            let destination = segue.destination as! InfoPage
+            destination.passedTitle = (cell?.textLabel?.text)!
+            if (cell?.backgroundColor == UIColor.green) {
+                destination.passedStatus = true
             }
-             */
+            if (cell?.backgroundColor == UIColor.white) {
+                destination.passedStatus = false
+            }
         }
     }
     
     /* Takes a UISwipeGestureRecognizer from viewDidLoad. Allows a table cell to change color depending on which way it was swiped */
     func cellSwiped(mySender:UISwipeGestureRecognizer) {
         let point = mySender.location(in: self.listTableView) //this is a CGPoint
-        let path = self.listTableView.indexPathForRow(at: point) //this is an IndexPath. It will be "nil" if the cell selected isn't valid.
+        let path = self.listTableView.indexPathForRow(at: point) //this is an IndexPath.
         if (path != nil) {
             let cell = self.listTableView.cellForRow(at: path!) //this is a UITableViewCell
             if (mySender.direction == .left) {
