@@ -10,18 +10,22 @@ import UIKit
 class InfoPage: UIViewController {
 
     @IBOutlet weak var itemTitle: UITextField!
-    @IBOutlet weak var itemDescription: UITextView!
-    @IBOutlet weak var itemSwitch: UISwitch!
-    @IBOutlet weak var itemView: UIView!
+    @IBOutlet weak var itemText: UITextView!
+    @IBOutlet weak var itemStatus: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let dismissKeyboard = UITapGestureRecognizer.init(target: self, action: #selector(InfoPage.userTappedBackground))
+        view.addGestureRecognizer(dismissKeyboard)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func userTappedBackground() {
+        view.endEditing(true)
     }
     
     /*

@@ -15,19 +15,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         alert()
     }
     
-    func prepare(for mySegue: UIStoryboardSegue, mySender:UITapGestureRecognizer?) {
-        if (mySegue.identifier == "segueToInfoPage") {
-            let newVC:InfoPage = mySegue.destination as! InfoPage
-            /*
-            let path:IndexPath = self.listTableView.indexPathForSelectedRow!
-            let passedObject = self.listTableView.cellForRow(at: path)
-            */
-        }
-    }
-    
     /* Usually called once when the view controller is loaded into memory. Establishes things that will last the entire lifecycle. In this case, it sets the TableView data source and swipe recognition constants */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         listTableView.dataSource = self
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.cellSwiped))
@@ -37,8 +28,41 @@ class ViewController: UIViewController, UITableViewDataSource {
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
         
-        
-        //let infoPage = UITapGestureRecognizer(target: self, action: #selector(ViewController.cellTapped))
+        /*
+        let tapper = UITapGestureRecognizer(target: self, action: #selector(ViewController.activateSegue))
+        view.addGestureRecognizer(tapper)
+         */
+    }
+    
+    /*
+    func activateSegue() {
+        self.performSegue(withIdentifier: "segueToInfoPage", sender: self)
+    }
+    */
+ 
+    //IS THIS FUNCTION BEING CALLED?! I DON'T KNOW AND I CAN'T TELL 
+    func prepare(for mySegue: UIStoryboardSegue, mySender:UITapGestureRecognizer?) {
+        if (mySegue.identifier == "specialSeg") {
+            let destination = mySegue.destination as! InfoPage
+            
+            //destination.itemTitle.text = "Please woasdlfkajsdf"
+            //destination.itemText.text = "asdlfajsdfladf"
+            destination.itemStatus.isOn = false
+            
+            /*
+            let point = mySender?.location(in: self.listTableView)
+            let path = self.listTableView.indexPathForRow(at: point!)
+            if (path != nil) {
+                let cell = self.listTableView.cellForRow(at: path!)
+                if (cell?.backgroundColor == UIColor.green) {
+                    destination.itemStatus.isOn = true
+                }
+                if (cell?.backgroundColor == UIColor.white) {
+                    destination.itemStatus.isOn = false
+                }
+            }
+             */
+        }
     }
     
     /* Takes a UISwipeGestureRecognizer from viewDidLoad. Allows a table cell to change color depending on which way it was swiped */
@@ -60,6 +84,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listItem") //as! itemTableViewCell
         cell?.textLabel?.text = items[indexPath.row]
+        cell?.selectionStyle = UITableViewCellSelectionStyle.none
         return cell!
     }
     
