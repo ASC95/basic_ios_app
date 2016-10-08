@@ -9,11 +9,12 @@
 import UIKit
 
 class itemTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var itemLabel: UILabel!
+    
+    var myText = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    
         // Initialization code
     }
     

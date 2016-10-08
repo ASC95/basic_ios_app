@@ -1,15 +1,14 @@
 //  ViewController.swift
 //  UVA Bucket List
 //
-//  Created by Nader Maharmeh on 9/24/16.
-//  Copyright © 2016 Nader Maharmeh. All rights reserved.
-//
 
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
     
     var items: [String] = ["Streak the Lawn", "Go to Carter's Mountain", "Party with T-Sully", "Frat Every Day"]
+    var currentPath:IndexPath? = nil
+    
     @IBOutlet weak var listTableView: UITableView!
     @IBAction func addItem(_ sender: AnyObject) {
         alert()
@@ -28,30 +27,33 @@ class ViewController: UIViewController, UITableViewDataSource {
         view.addGestureRecognizer(rightSwipe)
     }
 
-    /* Automatically called because I created the segue in the storyboard */
-    
-    //Keep text in info page after edited
-    //pass back changes to the cells
+    //Automatically called because I created the segue in the storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = listTableView.cellForRow(at: listTableView.indexPathForSelectedRow!)
+        let cell = listTableView.cellForRow(at: listTableView.indexPathForSelectedRow!) as! itemTableViewCell
+        
+        self.currentPath = listTableView.indexPathForSelectedRow
+        
         if (segue.identifier == "specialSeg") {
             let destination = segue.destination as! InfoPage
-            destination.passedTitle = (cell?.textLabel?.text)!
-            if (cell?.backgroundColor == UIColor.green) {
+            
+            destination.passedTitle = (cell.textLabel?.text)!
+            destination.passedText = cell.myText
+            
+            if (cell.backgroundColor == UIColor.green) {
                 destination.passedStatus = true
             }
-            if (cell?.backgroundColor == UIColor.white) {
+            if (cell.backgroundColor == UIColor.white) {
                 destination.passedStatus = false
             }
         }
     }
     
-    /* Takes a UISwipeGestureRecognizer from viewDidLoad. Allows a table cell to change color depending on which way it was swiped */
+    //Takes a UISwipeGestureRecognizer from viewDidLoad. Allows a table cell to change color depending on which way it was swiped
     func cellSwiped(mySender:UISwipeGestureRecognizer) {
-        let point = mySender.location(in: self.listTableView) //this is a CGPoint
-        let path = self.listTableView.indexPathForRow(at: point) //this is an IndexPath.
+        let point = mySender.location(in: self.listTableView)
+        let path = self.listTableView.indexPathForRow(at: point)
         if (path != nil) {
-            let cell = self.listTableView.cellForRow(at: path!) //this is a UITableViewCell
+            let cell = self.listTableView.cellForRow(at: path!)
             if (mySender.direction == .left) {
                 cell?.backgroundColor = UIColor.white
             }
@@ -63,10 +65,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     /* Required. Asks the data source for a cell to insert in a particular location of the table view. */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listItem") //as! itemTableViewCell
-        cell?.textLabel?.text = items[indexPath.row]
-        cell?.selectionStyle = UITableViewCellSelectionStyle.none
-        return cell!
+        
+        let cell = listTableView.dequeueReusableCell(withIdentifier: "listItem") as! itemTableViewCell
+        cell.textLabel?.text = items[indexPath.row]
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        return cell
     }
     
     /* Required. Tells the data source to return the number of rows in a given section of a table view. */
@@ -98,6 +101,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Invoked just before the unwind segue occurs. THIS IS THE UNWIND SEGUE DESTINATION BECAUSE IT IMPLEMENTS THIS METHOD
+    @IBAction func unwindToViewController(sender: UIStoryboardSegue) {
+        
     }
 }
 

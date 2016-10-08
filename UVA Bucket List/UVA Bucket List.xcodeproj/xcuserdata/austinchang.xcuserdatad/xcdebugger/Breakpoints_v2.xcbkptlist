@@ -2,4 +2,132 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UVA Bucket List/InfoPage.swift"
+            timestampString = "497578720.596989"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UVA Bucket List/ViewController.swift"
+            timestampString = "497578720.596989"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UVA Bucket List/InfoPage.swift"
+            timestampString = "497578720.596989"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UVA Bucket List/itemTableViewCell.swift"
+            timestampString = "497578420.5879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "itemTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UVA_Bucket_List.itemTableViewCell.myText.getter : Swift.String"
+                  moduleName = "UVA Bucket List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/austinchang/iosProjects/ios-mini-app-cortland/UVA%20Bucket%20List/UVA%20Bucket%20List/itemTableViewCell.swift"
+                  timestampString = "497578467.906084"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UVA_Bucket_List.itemTableViewCell.myText.setter : Swift.String"
+                  moduleName = "UVA Bucket List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/austinchang/iosProjects/ios-mini-app-cortland/UVA%20Bucket%20List/UVA%20Bucket%20List/itemTableViewCell.swift"
+                  timestampString = "497578467.907652"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UVA_Bucket_List.itemTableViewCell.init (style : __C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; UVA_Bucket_List.itemTableViewCell"
+                  moduleName = "UVA Bucket List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/austinchang/iosProjects/ios-mini-app-cortland/UVA%20Bucket%20List/UVA%20Bucket%20List/itemTableViewCell.swift"
+                  timestampString = "497578467.909292"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UVA_Bucket_List.itemTableViewCell.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;UVA_Bucket_List.itemTableViewCell&gt;"
+                  moduleName = "UVA Bucket List"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/austinchang/iosProjects/ios-mini-app-cortland/UVA%20Bucket%20List/UVA%20Bucket%20List/itemTableViewCell.swift"
+                  timestampString = "497578467.910856"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

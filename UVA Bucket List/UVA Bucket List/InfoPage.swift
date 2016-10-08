@@ -13,14 +13,14 @@ class InfoPage: UIViewController {
     @IBOutlet weak var itemText: UITextView!
     @IBOutlet weak var itemStatus: UISwitch!
     var passedTitle:String = ""
-    //var passedText:String = "" //won't this destory the text each time?
+    var passedText:String = ""
     var passedStatus:Bool = false
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         itemTitle.text = passedTitle
-        //itemText.text = passedText
         itemStatus.isOn = passedStatus
+        itemText.text = passedText
         let dismissKeyboard = UITapGestureRecognizer.init(target: self, action: #selector(InfoPage.userTappedBackground))
         view.addGestureRecognizer(dismissKeyboard)
     }
@@ -34,18 +34,19 @@ class InfoPage: UIViewController {
         view.endEditing(true)
     }
     
-    /* Goes back to the List View Controller */
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ViewController
+        let targetPath = destination.currentPath
         
+        let targetCell = destination.listTableView.cellForRow(at: targetPath!) as! itemTableViewCell //potential crash
+        targetCell.myText = itemText.text
+        targetCell.textLabel?.text = itemTitle.text
+        
+        if (itemStatus.isOn) {
+            targetCell.backgroundColor = UIColor.green
+        }
+        else {
+            targetCell.backgroundColor = UIColor.white
+        }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
