@@ -16,6 +16,7 @@ class InfoPage: UIViewController {
     var passedText:String = ""
     var passedStatus:Bool = false
     
+    //Loaded at beginnng of view controller's life
     override func viewDidLoad() {
         super.viewDidLoad()
         itemTitle.text = passedTitle
@@ -30,10 +31,12 @@ class InfoPage: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //dismiss the keyboard
     @IBAction func userTappedBackground() {
         view.endEditing(true)
     }
     
+    //updates the values of the cells in the ViewController (facilitates saving between view controllers)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! ViewController
         let targetPath = destination.currentPath
